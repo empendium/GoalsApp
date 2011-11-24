@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Air</title>
+  <%= stylesheet_link_tag    "application" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<div id="header">
+  <h1><%= link_to "Academy Air", root_url %></h1>
+  <% if logged_in? %>
+    <h2>Hello, <%= current_user.first_name %> <%= current_user.last_name %>!</h2>
+    <p><%= link_to "Sign Out", sessions_destroy_url, :method => :delete %>
+      | <%= link_to "My Account", user_url(current_user) %></p>
+  <% else %>
+    <p><%= link_to "Sign in", login_page_url %> | <%= link_to "Sign Up", new_user_url %></p>
+  <% end %>
+</div>
+<% if flash[:notice] %>
+  <p id="notice"><%= flash[:notice] %></p>
+<% end %>
+
+<%= yield %>
+
+</body>
+</html>

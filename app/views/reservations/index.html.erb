@@ -1,0 +1,29 @@
+<h1>Listing reservations</h1>
+
+<table>
+  <tr>
+    <th>User</th>
+    <th>Flight</th>
+    <th>Travels on</th>
+    <th>Card number</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @reservations.each do |reservation| %>
+  <tr>
+    <td><%= reservation.user_id %></td>
+    <td><%= reservation.flight_id %></td>
+    <td><%= reservation.travels_on %></td>
+    <td><%= reservation.card_number %></td>
+    <td><%= link_to 'Show', reservation %></td>
+    <td><%= link_to 'Edit', edit_reservation_path(reservation) %></td>
+    <td><%= link_to 'Destroy', reservation, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Reservation', new_reservation_path %>

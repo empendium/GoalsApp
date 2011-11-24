@@ -1,0 +1,24 @@
+<h1>Flight Schedule</h1>
+
+<p><%= link_to "See the Airports You Can Fly To", airports_url %></p>
+
+<%= form_tag flights_url, :method => :get do %>
+<%= check_box_tag :meal %><%= label_tag :meal, "Meals Only" %>
+<%= submit_tag "Search" %>
+<% end %>
+
+<table>
+  <tr>
+    <th/>
+    <th>Number</th>
+    <th>Departs at</th>
+    <th>From</th>
+    <th>To</th>
+    <th>Miles</th>
+    <th>Meal Service</th>
+  </tr>
+
+<%= render @flights %>
+
+</table>
+

@@ -1,0 +1,33 @@
+<%= form_for(@reservation) do |f| %>
+  <% if @reservation.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@reservation.errors.count, "error") %> prohibited this reservation from being saved:</h2>
+
+      <ul>
+      <% @reservation.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<p><strong>For: </strong><%= @user.first_name %> <%= @user.last_name %></p>
+
+<p>Flight #<%= @flight.number %></p>
+<p>Departs <%= @flight.departure_airport.code %>  <%= @flight.departure_airport.city %> at <%= @flight.departs_at.strftime("%I:%M %p") %></p>
+<p>Arrives <%= @flight.arrival_airport.code %>  <%= @flight.arrival_airport.city %> at <%= (@flight.departs_at + @flight.duration*60).strftime("%I:%M %p") %></p>
+  
+  <%= f.hidden_field :flight_id %>
+  
+  <div class="field">
+    <%= f.label :travels_on, "What day to you want to leave?" %><br />
+    <%= f.date_select :travels_on %>
+  </div>
+  <div class="field">
+    <%= f.label :card_number %><br />
+    <%= f.text_field :card_number %>
+  </div>
+  <div class="actions">
+    <%= f.submit %> or <%= link_to "Cancel", :back %>
+  </div>
+<% end %>

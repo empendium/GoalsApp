@@ -1,0 +1,11 @@
+Academy Air Reservation
+
+Hello, <%= @reservation.user.first_name %>
+
+Here are the details about your reservation:
+
+<p>From: <%= @reservation.flight.departure_airport.code %></p>
+<p>To: <%= @reservation.flight.arrival_airport.code %></p>
+<p>On: <%= @reservation.travels_on %></p>
+
+<p>Thanks!</p>

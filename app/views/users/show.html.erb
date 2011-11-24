@@ -1,0 +1,20 @@
+<h1>My Account</h1>
+
+<h3>Total Miles Earned: <%= @user.miles %> miles</h3>
+
+<h2>Personal Information</h2>
+<p><%= @user.first_name %> <%= @user.last_name %></p>
+<p><%= @user.street %></p>
+<p><%= @user.city %>, <%= @user.state %> <%= @user.zip %></p>
+
+<h3>My Reservations</h3>
+
+<% @user.reservations.each do |reservation| %>
+
+<% if reservation.flight %>
+<p><%= link_to "View Details", reservation_url(reservation) %> <%= reservation.flight.departure_airport.code %> to <%= reservation.flight.arrival_airport.code %>
+  on <%= reservation.travels_on %> (<%= reservation.flight.distance %> miles)
+</p>
+<% end %>
+
+<% end %>

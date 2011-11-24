@@ -1,0 +1,9 @@
+<tr>
+  <td><%= link_to "Book Now", new_reservation_url(:flight_id => flight.id) %>
+  <td><%= flight.number %></td>
+  <td><%= flight.departs_at.localtime.strftime("%I:%m %p") %></td>
+  <td><%= link_to flight.departure_airport.code, airport_url(flight.departure_airport) %></td>
+  <td><%= flight.arrival_airport.code %></td>
+  <td><%= flight.distance %> miles</td>
+  <td><%= flight.meal? ? "YES" : "---"%></td>
+</tr>

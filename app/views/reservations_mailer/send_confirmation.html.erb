@@ -1,0 +1,11 @@
+<h1>Academy Air Reservation</h1>
+
+<p>Hello, <%= @reservation.user.first_name %>,</p>
+
+<p>Here are the details about your reservation:</p>
+
+<p>From: <%= @reservation.flight.departure_airport.code %></p>
+<p>To: <%= @reservation.flight.arrival_airport.code %></p>
+<p>On: <%= @reservation.travels_on %></p>
+
+<p>Thanks!</p>

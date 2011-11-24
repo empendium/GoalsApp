@@ -1,0 +1,23 @@
+<h1>Reservation Details</h1>
+
+<p><%= button_to "Cancel This Reservation", reservation_url(@reservation), :method => :delete, :confirm => "Are you really sure?" %> </p>
+
+<h2>Who's Flying</h2>
+
+<%= render @user %>
+
+<h2>Flight Details</h2>
+<p>Flight #<%= @reservation.flight.number %></p>
+<p>Time: <%= @reservation.flight.departs_at.localtime.strftime("%I:%M %p") %></p>
+<p>Departs: <%= @reservation.flight.departure_airport.city %></p>
+<p>Arrives: <%= @reservation.flight.arrival_airport.city %></p>
+
+<p>
+  <b>Travels on:</b>
+  <%= @reservation.travels_on %>
+</p>
+
+<p>
+  <b>Card number:</b>
+  <%= @reservation.card_number %>
+</p>
